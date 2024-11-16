@@ -1,0 +1,213 @@
+@forward 'global';
+
+@mixin flexCenter($justify: center, $align_item: center, $direction: row){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align_item;
+    flex-direction: $direction;
+}
+
+@keyframes myrotate {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+    
+}
+
+*, html{
+    scroll-behavior: smooth;
+}
+
+body{
+    @include flexCenter($justify:start, $direction:column);
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: #F8EAE3;
+    overflow-x: hidden;
+}
+
+header{
+    width: 100%;
+    background-color: #E7C0BF;
+
+    .navbar{
+        @include flexCenter($justify: space-between);
+        margin: 1rem;
+
+        @media (min-width:1024px) {
+            margin: 1rem 3rem;
+        }
+
+        &__logo{
+            height: 3rem;
+        }
+
+        &__items{
+            display: none;
+
+            @media (min-width:1024px) {
+                @include flexCenter;                
+            }
+            
+
+            &__item{
+                margin: 1rem;
+                
+            }
+        }
+
+        &__mobile{
+            display: block;
+            font-size: 3rem;
+
+            @media (min-width:1024px) {
+                display: none;
+            }
+            
+        }
+    }
+}
+
+.hero{
+    @include flexCenter($direction: column);
+    width: 100%;
+    height: 100vh;
+    background: url(/src/img/hero_bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media (min-width: 1024px) {
+        background-size: cover;
+        
+    }
+
+    &__title{
+        min-width: 150px;
+        max-width: 500px;
+        display: none;
+
+        @media (min-width: 1024px) {
+            display: block;
+            
+        }
+    }
+
+    &__title-mobile{
+        width: 100%;
+        display: block;
+
+        @media (min-width: 1024px) {
+            display: none;
+            
+        }
+    }
+
+
+    &__deco{
+        @include flexCenter($direction: column);
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            @include flexCenter($justify: end);
+        }
+
+        &__good{
+            width: 100%;
+            display: none;
+
+            @media (min-width: 1024px) {
+                width: 30%;
+                display: block;
+
+            }
+
+        }
+
+        &__sticker{
+            width: 20%;
+            animation: myrotate linear infinite 10s;
+
+            @media (min-width: 1024px) {
+                width: 10%;
+                margin: 2rem;                
+            }
+        }
+    }
+}
+
+.shop{
+    @include flexCenter($align_item: start);
+    width: 100%;
+    height: 300vh;
+
+    &__feature1{
+        @include flexCenter($justify: start, $direction: column);
+        background: none;
+        width: 100%;
+        height: 100vh; 
+
+        @media (min-width: 1024px) {
+            @include flexCenter($justify: start, $align_item: end, $direction: column);      
+            background: url(../img/shop1_img.png);
+            background-repeat: no-repeat;
+            background-size: contain;       
+        }
+
+        &__name{
+            @include flexCenter($direction: column);
+    
+    
+            @media (min-width: 1024px) {              
+            }
+    
+            &__title{
+                min-width: 100px;
+                max-width: 250px;
+                margin: 1rem;
+    
+                @media (min-width: 1024px) {
+                    
+                }
+            }
+    
+            &__text{
+                position: relative;
+                width: 90%;
+                margin: 2rem;
+    
+                @media (min-width: 768px) {
+                    width: 50%;                
+                }
+    
+                &__bg{
+                    position: absolute;
+                    background-color: #ffffff;
+                    transform: translate(15%,20%);
+                    width: 90%;
+                    padding: 4rem;
+                }
+    
+                &__text{
+                    padding: 1rem;
+                    background-color: #E7C0BF;
+                    position: absolute;
+                }
+            }
+
+            .shop1_img{
+                display: block;
+                width: 100%;
+                
+                @media (min-width: 1024px) {
+                    display: none;
+                    
+                }
+            }
+        }
+    }
+
+}
